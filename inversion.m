@@ -33,4 +33,6 @@ end
 minFit
 
 plot(grafFit, 'r');
+xlabel('generacie (x)');
+ylabel('minimalna fitness (y)');
 legend('difference');
