@@ -15,8 +15,8 @@ for i=1:numcykle
     NewPop1=selbest(Pop, Fit, [3 1]); % 3 najlepsich a 1 nahodny vyber prvkov
     NewPop2=selrand(Pop, Fit, 26); % nahodne vybrane ostatne chybajuce prvky do poppulacie
     CrossedPop=crossov(NewPop2, 2, 0); % krizenie
-    MutedPopX=mutx(CrossedPop, 0.05, Space); % mutacia
-    MutedPopA=muta(MutedPopX, 0.05, [1 1 1 1 1 1 1 1 1]*0.05, Space); % mutacia
+    MutedPopX=mutx(CrossedPop, 0.1, Space); % mutacia
+    MutedPopA=muta(MutedPopX, 0.02, [5 5 5 5 5 5 5 5 5]*0.02, Space); % mutacia
     Pop=[NewPop1; MutedPopA]; % Spojenie najlepsich a zmutovanych jedincov
 
     Fit=fitness(Pop, A);
@@ -28,8 +28,8 @@ for i=1:numcykle
     grafFit(i)=minFit; % ulozenie minimalnej hodnoty po kazdej generacii (iteracii)
 end
 
-% matrix=reshape(minRet, [3 3])
-% invA
+matrix=reshape(minRet, [3 3])
+invA
 minFit
 
 plot(grafFit, 'r');
