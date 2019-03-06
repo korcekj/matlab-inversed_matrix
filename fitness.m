@@ -4,12 +4,13 @@
 function [Fit] = fitness(Pop, A)
 
     [lpop,lstring]=size(Pop); % zistenie velkosti matrice Pop -> pocet riadkov, stlpcov
-    invA=inv(A); % vypocet inverznej matice z matice A ako parameter funckie
-    invA=invA(:)'; % transponovanie stlpca na riadok kvoli jednoduchsiemu vypoctu
+    oneM=[1 0 0; 0 1 0; 0 0 1];
     
     for i=1:lpop
-        diff=abs(Pop(i,:)-invA); % vypocitanie rozdielu medzi vektorom hodnot inveznych matic
-        Fit(i)=sum(diff(:)); % spocitanie rozdielov hodnot a priradenie hodnoty na riadok i
+        invM=reshape(Pop(i,:), [3 3]);
+        multiM=A*invM;
+        diff=abs(multiM - oneM);
+        Fit(i)=sum(diff(:));
     end
     
 end
